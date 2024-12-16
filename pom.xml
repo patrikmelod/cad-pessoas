@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.cp</groupId>
 	<artifactId>CadPessoas</artifactId>
@@ -65,6 +67,12 @@
 			<artifactId>datafaker</artifactId>
 			<version>2.3.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>4.11.0</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>Cadastro-Pessoas</finalName>
@@ -127,7 +135,8 @@
 					<printFailingErrors>true</printFailingErrors>
 					<!-- enable incremental analysis -->
 					<analysisCache>true</analysisCache>
-					<!-- analysisCacheLocation: optional - points to the following location by default -->
+					<!-- analysisCacheLocation: optional - points to the following location by
+					default -->
 					<analysisCacheLocation>${project.build.directory}/pmd/pmd.cache</analysisCacheLocation>
 					<linkXRef>false</linkXRef>
 					<minimumTokens>30</minimumTokens>
@@ -148,8 +157,18 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>3.25.0</version>
-						<configuration>
-				    	</configuration>
+				<configuration>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M7</version>
+				<configuration>
+					<includes>
+						<include>**/*Test.java</include>
+					</includes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</reporting>
